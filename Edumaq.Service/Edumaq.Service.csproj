@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Edumaq.DataAccess\Edumaq.DataAccess.csproj" />
+    <ProjectReference Include="..\Edumaq.Dto\Edumaq.Dto.csproj" />
+    <ProjectReference Include="..\Edumaq.Repository\Edumaq.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

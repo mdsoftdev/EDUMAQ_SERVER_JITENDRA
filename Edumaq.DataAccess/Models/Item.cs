@@ -7,12 +7,15 @@ using System.Text;
 
 namespace Edumaq.DataAccess.Models
 {
-    public class Supplier : BaseEntity
+    public class Item : BaseEntity
     {
-        public string SupplierName { get; set; }
+        public string ItemName { get; set; }
 
-        [ForeignKey("SupplierType")]
-        public long SupplierTypeId { get; set; }
+        [ForeignKey("ItemGroup")]
+        public long ItemGroupId { get; set; }
+
+        [ForeignKey("ItemCategory")]
+        public long ItemCategoryId { get; set; }
         public string Code { get; set; }
         public string PanNo { get; set; }
         public string TanNo { get; set; }

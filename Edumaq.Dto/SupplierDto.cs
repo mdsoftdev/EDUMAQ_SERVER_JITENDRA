@@ -8,7 +8,7 @@ namespace Edumaq.Dto
         public long id { get; set; }
         public string SupplierName { get; set; }
         public long SupplierTypeId { get; set; }
-        public long Code { get; set; }
+        public string Code { get; set; }
         public string PanNo { get; set; }
         public string TanNo { get; set; }
         public string GstNo { get; set; }
@@ -33,11 +33,13 @@ namespace Edumaq.Dto
             Supplier supplier = new Supplier();
             supplier.Id = supplierDto.id;
             supplier.SupplierName = supplierDto.SupplierName;
+            supplier.SupplierTypeId = supplierDto.SupplierTypeId;
             supplier.Code = supplierDto.Code;
             supplier.PanNo = supplierDto.PanNo;
             supplier.TanNo = supplierDto.TanNo;
             supplier.GstNo = supplierDto.GstNo;
             supplier.ContactNo = supplierDto.ContactNo;
+            supplier.Email = supplierDto.Email;
             supplier.Website = supplierDto.Website;
             supplier.CountryId = supplierDto.CountryId;
             supplier.StateId = supplierDto.StateId;

@@ -3,6 +3,8 @@ using Edumaq.DataAccess.Models;
 using Edumaq.Service.Interface;
 using Edumaq.Repository.Interfaces;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Edumaq.Service
 {
@@ -13,7 +15,9 @@ namespace Edumaq.Service
         {
             _stateRepository = repository;
         }
-
+        public async Task<IQueryable<State>> GetStatesByCountry(long id) {
+            return _stateRepository.GetStatesByCountry(id);
+        }
         //public async Task<Tax> InsertTax(Tax tax)
         //{
         //    //if (academicYear.IsCurrentAcademicYear)

@@ -4,14 +4,16 @@ using Edumaq.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Edumaq.DataAccess.Migrations
 {
     [DbContext(typeof(EdumaqDBContext))]
-    partial class EdumaqDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211201101250_ItemCreation")]
+    partial class ItemCreation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,6 +63,44 @@ namespace Edumaq.DataAccess.Migrations
                     b.ToTable("AcademicYears");
                 });
 
+            modelBuilder.Entity("Edumaq.DataAccess.Models.City", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("BranchId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ModifiedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("StateId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("Edumaq.DataAccess.Models.Color", b =>
                 {
                     b.Property<long>("Id")
@@ -95,6 +135,42 @@ namespace Edumaq.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
+                });
+
+            modelBuilder.Entity("Edumaq.DataAccess.Models.Country", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("BranchId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ModifiedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("Edumaq.DataAccess.Models.Item", b =>
@@ -293,6 +369,44 @@ namespace Edumaq.DataAccess.Migrations
                     b.ToTable("ItemGroups");
                 });
 
+            modelBuilder.Entity("Edumaq.DataAccess.Models.State", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("BranchId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CountryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ModifiedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("States");
+                });
+
             modelBuilder.Entity("Edumaq.DataAccess.Models.Supplier", b =>
                 {
                     b.Property<long>("Id")
@@ -384,6 +498,12 @@ namespace Edumaq.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AcademicYearId");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("StateId");
 
                     b.HasIndex("SupplierTypeId");
 
@@ -532,6 +652,15 @@ namespace Edumaq.DataAccess.Migrations
                     b.ToTable("Units");
                 });
 
+            modelBuilder.Entity("Edumaq.DataAccess.Models.City", b =>
+                {
+                    b.HasOne("Edumaq.DataAccess.Models.State", null)
+                        .WithMany("Cities")
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Edumaq.DataAccess.Models.Item", b =>
                 {
                     b.HasOne("Edumaq.DataAccess.Models.Color", null)
@@ -552,7 +681,11 @@ namespace Edumaq.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    
+                    b.HasOne("Edumaq.DataAccess.Models.Tax", null)
+                        .WithMany("Items")
+                        .HasForeignKey("TaxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Edumaq.DataAccess.Models.Unit", null)
                         .WithMany("Items")
@@ -585,11 +718,38 @@ namespace Edumaq.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Edumaq.DataAccess.Models.State", b =>
+                {
+                    b.HasOne("Edumaq.DataAccess.Models.Country", null)
+                        .WithMany("States")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Edumaq.DataAccess.Models.Supplier", b =>
                 {
                     b.HasOne("Edumaq.DataAccess.Models.AcademicYear", null)
                         .WithMany("Suppliers")
                         .HasForeignKey("AcademicYearId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Edumaq.DataAccess.Models.City", null)
+                        .WithMany("Suppliers")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Edumaq.DataAccess.Models.Country", null)
+                        .WithMany("Suppliers")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Edumaq.DataAccess.Models.State", null)
+                        .WithMany("Suppliers")
+                        .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

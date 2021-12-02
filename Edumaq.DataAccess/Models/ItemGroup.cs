@@ -20,5 +20,6 @@ namespace Edumaq.DataAccess.Models
 
 
         public ICollection<ItemCategory> ItemCategories { get; set; }
+        public ICollection<Item> Items { get; set; }
     }
 }

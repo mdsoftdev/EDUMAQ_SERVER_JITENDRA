@@ -68,6 +68,8 @@ namespace Edumaq
             services.AddScoped(typeof(IStateRepository), typeof(StateRepository));
             services.AddScoped(typeof(ICityService), typeof(CityService));
             services.AddScoped(typeof(ICityRepository), typeof(CityRepository));
+            services.AddScoped(typeof(IItemService), typeof(ItemService));
+            services.AddScoped(typeof(IItemRepository), typeof(ItemRepository));
 
             services.AddControllers().AddNewtonsoftJson();
         }

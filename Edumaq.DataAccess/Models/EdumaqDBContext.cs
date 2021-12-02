@@ -29,7 +29,9 @@ namespace Edumaq.DataAccess.Models
         public DbSet<Country> Countries { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<City> Cities { get; set; }
-
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Item> Items { get; set; }
 
     } 
 }

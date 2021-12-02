@@ -22,6 +22,6 @@ namespace Edumaq.DataAccess.Models
         public DateTime DeletedDate { get; set; }
         public long DeletedBy { get; set; }
 
-        
+        public ICollection<Item> Items { get; set; }
     }
 }

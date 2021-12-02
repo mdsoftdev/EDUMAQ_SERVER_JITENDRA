@@ -39,6 +39,13 @@ namespace Edumaq.Controllers
             return await _service.GetById(id);
         }
 
+        [HttpGet("/api/cities/citiesbystate/{id}")]
+        public async Task<IEnumerable<City>> GetCitiesByState(long id)
+        {
+            //var rng = new Random();
+            var cities = await _service.GetCitiesByState(id);
+            return cities;
+        }
         //[HttpGet("/api/itemgroups/[action]")]
         //public ActionResult<bool> IsCurrentAcademicYearExits()
         //{

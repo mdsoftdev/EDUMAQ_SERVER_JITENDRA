@@ -13,7 +13,7 @@ namespace Edumaq.DataAccess.Models
 
         [ForeignKey("SupplierType")]
         public long SupplierTypeId { get; set; }
-        public long Code { get; set; }
+        public string Code { get; set; }
         public string PanNo { get; set; }
         public string TanNo { get; set; }
         public string GstNo { get; set; }

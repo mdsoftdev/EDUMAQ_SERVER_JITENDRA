@@ -18,6 +18,19 @@ namespace Edumaq.Repository
             _dbContext = dbContext;
         }
 
+        public IQueryable<State> GetStatesByCountry(long id)
+        {
+            try
+            {
+                return _dbContext.Set<State>().Where(s => s.CountryId == id).AsNoTracking();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
         //public void RemoveCurrentAcademicYear()
         //{
         //    var academicyears = _dbContext.AcademicYears.ToList();

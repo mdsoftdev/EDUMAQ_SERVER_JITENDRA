@@ -43,6 +43,7 @@ namespace Edumaq.Repository
             }
             catch (Exception ex) {
                 string msg = ex.Message;
+                throw ex;
             }
 
             return entity;

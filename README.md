@@ -1,2 +1,1 @@
-# EDUMAQ_API
-It Contains Service Project of EDUMAQ
+# EDUMAQ_SERVER_JITENDRA

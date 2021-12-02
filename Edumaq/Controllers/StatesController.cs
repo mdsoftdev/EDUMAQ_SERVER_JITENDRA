@@ -31,6 +31,13 @@ namespace Edumaq.Controllers
             //var rng = new Random();
             return _service.GetAll();
         }
+        [HttpGet("/api/statesbycountry/{id}")]
+        public async Task<IEnumerable<State>> GetStatesByCountry(long id)
+        {
+            //var rng = new Random();
+            var states = await _service.GetStatesByCountry(id);
+            return states;
+        }
 
         [HttpGet("/api/states/{id}")]
         public async Task<State> GetByStateID(long id)

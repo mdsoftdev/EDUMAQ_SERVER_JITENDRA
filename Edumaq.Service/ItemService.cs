@@ -13,12 +13,12 @@ namespace Edumaq.Service
             _itemRepository = repository;
         }
 
-        public async Task<Item> InsertSupplier(Item item)
+        public async Task<Item> InsertItem(Item item)
         {
             return await _itemRepository.Create(item);
         }
 
-        public async Task<Item> ModifySupplier(long id, Item item)
+        public async Task<Item> ModifyItem(long id, Item item)
         {
             await _itemRepository.Update(id, item);
             return item;

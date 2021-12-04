@@ -41,7 +41,7 @@ namespace EdumaqAPI.Controllers
             if (_service.IsExists(x => x.ItemName == itemDto.ItemName))
                 return StatusCode(409, $"Item already exists.");
 
-            await _service.InsertSupplier(itemDto.ConvertToModel(itemDto));
+            await _service.InsertItem(itemDto.ConvertToModel(itemDto));
 
             return Ok(itemDto);
         }
@@ -52,7 +52,7 @@ namespace EdumaqAPI.Controllers
             if (_service.IsExists(x => x.ItemName == itemDto.ItemName))
                 return StatusCode(409, $"Supplier already exists.");
 
-            await _service.ModifySupplier(id, itemDto.ConvertToModel(itemDto));
+            await _service.ModifyItem(id, itemDto.ConvertToModel(itemDto));
             return Ok(itemDto);
         }
 

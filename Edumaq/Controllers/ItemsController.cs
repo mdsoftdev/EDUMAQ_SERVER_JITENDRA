@@ -49,8 +49,8 @@ namespace EdumaqAPI.Controllers
         [HttpPut("/api/items/{id}")]
         public async Task<ActionResult<ItemDto>> Update(long id, ItemDto itemDto)
         {
-            if (_service.IsExists(x => x.ItemName == itemDto.ItemName))
-                return StatusCode(409, $"Supplier already exists.");
+            if (id < 1 )
+                return StatusCode(409, $"Invalid Id.");
 
             await _service.ModifyItem(id, itemDto.ConvertToModel(itemDto));
             return Ok(itemDto);

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
 namespace Edumaq.DataAccess.Models
 {
     public class Item : BaseEntity
@@ -22,20 +18,25 @@ namespace Edumaq.DataAccess.Models
         [ForeignKey("Unit")]
         public long UnitId { get; set; }
 
-        public int ItemTypeId { get; set; } // need lookup table?
+        public string ItemType { get; set; }
         public int Size { get; set; }
 
         [ForeignKey("Color")]
         public long ColorId { get; set; }
         public int OpeningStock { get; set; }
 
-        //[ForeignKey("Tax")]
+        [ForeignKey("Tax")]
         public long TaxId { get; set; }
         public int Cost { get; set; }
         public int SaleRate { get; set; }
         public int LowQtyAlert { get; set; }
-        public bool IsBundledProject { get; set; }
+        public bool IsBundledProduct { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+
+        [InverseProperty("BundleInv")]
+        public virtual ICollection<ProductBundle> BundleRef { get; set; }
+        [InverseProperty("ItemInv")]
+        public virtual ICollection<ProductBundle> ItemRef { get; set; }
     }
 }

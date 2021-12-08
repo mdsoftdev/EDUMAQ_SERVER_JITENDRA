@@ -17,6 +17,8 @@ using Edumaq.Repository;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Edumaq
 {
@@ -74,6 +76,8 @@ namespace Edumaq
             services.AddScoped(typeof(IUnitRepository), typeof(UnitRepository));
             services.AddScoped(typeof(IColorService), typeof(ColorService));
             services.AddScoped(typeof(IColorRepository), typeof(ColorRepository));
+            services.AddScoped(typeof(IProductBundleService), typeof(ProductBundleService));
+            services.AddScoped(typeof(IProductBundleRepository), typeof(ProductBundleRepository));
 
             services.AddControllers().AddNewtonsoftJson();
         }
@@ -85,7 +89,13 @@ namespace Edumaq
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
+                RequestPath = new PathString("/wwwroot")
+            });
+
             app.UseRouting();
             app.UseCors("CorsPolicy");
 

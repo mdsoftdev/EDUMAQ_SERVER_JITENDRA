@@ -14,7 +14,7 @@ namespace Edumaq.Dto
         public string ItemCode { get; set; }
         public string SKU { get; set; }
         public long UnitId { get; set; }
-        public int ItemTypeId { get; set; }
+        public string ItemType { get; set; }
         public int Size { get; set; }
         public long ColorId { get; set; }
         public int OpeningStock { get; set; }
@@ -22,7 +22,7 @@ namespace Edumaq.Dto
         public int Cost { get; set; }
         public int SaleRate { get; set; }
         public int LowQtyAlert { get; set; }
-        public bool IsBundledProject { get; set; }
+        public bool IsBundledProduct { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
 
@@ -38,7 +38,7 @@ namespace Edumaq.Dto
             item.ItemCode = itemDto.ItemCode;
             item.SKU = itemDto.SKU;
             item.UnitId = itemDto.UnitId;
-            item.ItemTypeId = itemDto.ItemTypeId;
+            item.ItemType = itemDto.ItemType;
             item.Size = itemDto.Size;
             item.ColorId = itemDto.ColorId;
             item.OpeningStock = itemDto.OpeningStock;
@@ -46,7 +46,7 @@ namespace Edumaq.Dto
             item.Cost = itemDto.Cost;
             item.SaleRate = itemDto.SaleRate;
             item.LowQtyAlert = itemDto.LowQtyAlert;
-            item.IsBundledProject = itemDto.IsBundledProject;
+            item.IsBundledProduct = itemDto.IsBundledProduct;
             item.Description = itemDto.Description;
             item.Image = itemDto.Image;
 

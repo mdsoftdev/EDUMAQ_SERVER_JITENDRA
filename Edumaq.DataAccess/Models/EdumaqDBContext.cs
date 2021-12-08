@@ -32,6 +32,8 @@ namespace Edumaq.DataAccess.Models
         public DbSet<Unit> Units { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<ProductBundle> ProductBundles{ get; set; }
 
-    } 
+
+    }
 }

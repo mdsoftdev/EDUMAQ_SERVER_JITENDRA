@@ -5,6 +5,7 @@ using Edumaq.Service.Interface;
 using Microsoft.AspNetCore.Cors;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace EdumaqAPI.Controllers
 {
@@ -46,15 +47,24 @@ namespace EdumaqAPI.Controllers
             return Ok(productBundleDto);
         }
 
-        [HttpPost("/api/productbundles/bulk")]
-        public async Task<ActionResult<ProductBundleDto>> CreateUpdateBulk([FromBody] List<ProductBundleDto> productBundleDtos)
+        [HttpPost("/api/productbundles/bulk/{id}")]
+        public async Task<ActionResult<ProductBundleDto>> CreateUpdateBulk(long id, [FromBody] List<ProductBundleDto> productBundleDtos)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            foreach(var productBundleDto in productBundleDtos)
+            // get the difference between incoming list and the existing bundles items and delete them
+            var existingBundle = _service.GetListById(id);
+            var bundleDiff = existingBundle.Where(item => !productBundleDtos.Any(e => item.Id == e.Id));
+            foreach(var deleteBundleItem in bundleDiff)
+            {
+                await Delete(deleteBundleItem.Id);
+            }
+
+            // insert update bundle items based on the id
+            foreach (var productBundleDto in productBundleDtos)
             {
                 if (productBundleDto.Id < 1)
                 {
@@ -66,8 +76,6 @@ namespace EdumaqAPI.Controllers
                 }
 
             }
-
-            
 
             return Ok();
         }

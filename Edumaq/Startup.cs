@@ -78,6 +78,10 @@ namespace Edumaq
             services.AddScoped(typeof(IColorRepository), typeof(ColorRepository));
             services.AddScoped(typeof(IProductBundleService), typeof(ProductBundleService));
             services.AddScoped(typeof(IProductBundleRepository), typeof(ProductBundleRepository));
+            services.AddScoped(typeof(IPurchaseOrderService), typeof(PurchaseOrderService));
+            services.AddScoped(typeof(IPurchaseOrderRepository), typeof(PurchaseOrderRepository));
+            services.AddScoped(typeof(IPurchaseOrderItemService), typeof(PurchaseOrderItemService));
+            services.AddScoped(typeof(IPurchaseOrderItemRepository), typeof(PurchaseOrderItemRepository));
 
             services.AddControllers().AddNewtonsoftJson();
         }

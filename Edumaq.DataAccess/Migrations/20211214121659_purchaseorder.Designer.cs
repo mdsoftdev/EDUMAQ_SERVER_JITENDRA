@@ -4,14 +4,16 @@ using Edumaq.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Edumaq.DataAccess.Migrations
 {
     [DbContext(typeof(EdumaqDBContext))]
-    partial class EdumaqDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211214121659_purchaseorder")]
+    partial class purchaseorder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -429,9 +431,6 @@ namespace Edumaq.DataAccess.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Discount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("InternalNote")
                         .HasColumnType("nvarchar(max)");
 
@@ -459,17 +458,8 @@ namespace Edumaq.DataAccess.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("SubTotal")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("SupplierId")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Tax")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalPayable")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

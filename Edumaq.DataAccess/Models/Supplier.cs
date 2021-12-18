@@ -41,5 +41,8 @@ namespace Edumaq.DataAccess.Models
         public bool IsDeleted { get; set; }
         public DateTime DeletedDate { get; set; }
         public long DeletedBy { get; set; }
+
+        public ICollection<PurchaseOrder> PurchaseOrder { get; set; }
+        public ICollection<GrnPurchase> GrnPurchase { get; set; }
     }
 }

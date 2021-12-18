@@ -1,4 +1,5 @@
 ﻿using Edumaq.DataAccess.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Edumaq.Service.Interface
@@ -9,5 +10,6 @@ namespace Edumaq.Service.Interface
         Task<PurchaseOrder> ModifyPurchaseOrder(long id, PurchaseOrder item);
 
         int GetQuotNoAndPo();
+        IEnumerable<PurchaseOrder> GetNonCopletePO(int supplierId);
     }
 }

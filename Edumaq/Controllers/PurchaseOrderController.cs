@@ -31,6 +31,12 @@ namespace EdumaqAPI.Controllers
             return ++max;
         }
 
+        [HttpGet("/api/purchaseOrders/noncomplete/{supplierId}")]
+        public IEnumerable<PurchaseOrder> GetNonCopletePO(int supplierId)
+        {
+            return _service.GetNonCopletePO(supplierId);
+        }
+
         [HttpGet("/api/purchaseOrders/{id}")]
         public async Task<PurchaseOrder> GetByID(long id)
         {

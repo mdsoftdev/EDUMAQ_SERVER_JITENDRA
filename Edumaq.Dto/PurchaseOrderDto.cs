@@ -10,7 +10,7 @@ namespace Edumaq.Dto
         public long Id { get; set; }
         public long BranchId { get; set; }
         public bool Status { get; set; }
-        public string SupplierId { get; set; }
+        public long SupplierId { get; set; }
         public int QuotationNo { get; set; }
         public string QuotationDate { get; set; }
         public int PurchaseOrderNumber { get; set; }

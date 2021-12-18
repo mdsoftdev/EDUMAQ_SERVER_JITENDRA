@@ -39,5 +39,6 @@ namespace Edumaq.DataAccess.Models
         [InverseProperty("ItemInv")]
         public virtual ICollection<ProductBundle> ItemRef { get; set; }
         public ICollection<PurchaseOrderItem> PurchaseOrderItem { get; set; }
+        public ICollection<GrnPurchaseItem> GrnPurchaseItem { get; set; }
     }
 }

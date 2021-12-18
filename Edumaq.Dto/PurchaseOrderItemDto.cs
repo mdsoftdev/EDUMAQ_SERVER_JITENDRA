@@ -14,7 +14,7 @@ namespace Edumaq.Dto
         public long ItemId { get; set; }
         public string ItemName { get; set; }
         public string ItemCode { get; set; }
-        public int Quatity { get; set; }
+        public int Quantity { get; set; }
         public decimal Rate { get; set; }
         public decimal Discount { get; set; }
         public decimal Tax { get; set; }
@@ -30,7 +30,7 @@ namespace Edumaq.Dto
             purchaseOrderItem.PurchaseOrderId = purchaseOrderItemDto.PurchaseOrderId;
             purchaseOrderItem.ItemName = purchaseOrderItemDto.ItemName;
             purchaseOrderItem.ItemCode = purchaseOrderItemDto.ItemCode;
-            purchaseOrderItem.Quatity = purchaseOrderItemDto.Quatity;
+            purchaseOrderItem.Quantity = purchaseOrderItemDto.Quantity;
             purchaseOrderItem.Rate = purchaseOrderItemDto.Rate;
             purchaseOrderItem.Discount = purchaseOrderItemDto.Discount;
             purchaseOrderItem.Tax = purchaseOrderItemDto.Tax;

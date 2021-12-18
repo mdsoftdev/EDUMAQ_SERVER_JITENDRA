@@ -35,6 +35,9 @@ namespace Edumaq.DataAccess.Models
         public DbSet<ProductBundle> ProductBundles{ get; set; }
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public DbSet<PurchaseOrderItem> PurchaseOrderItems { get; set; }
+        public DbSet<GrnPurchase> GrnPurchases { get; set; }
+        public DbSet<GrnPurchaseItem> GrnPurchaseItems { get; set; }
+
 
 
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Edumaq.DataAccess.Models
 {
@@ -22,7 +23,7 @@ namespace Edumaq.DataAccess.Models
         public int Size { get; set; }
 
         [ForeignKey("Color")]
-        public long ColorId { get; set; }
+        public long? ColorId { get; set; }
         public int OpeningStock { get; set; }
 
         [ForeignKey("Tax")]
@@ -33,6 +34,10 @@ namespace Edumaq.DataAccess.Models
         public bool IsBundledProduct { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+
+        public bool IsDeleted { get; set; }
+        public DateTime DeletedDate { get; set; }
+        public long DeletedBy { get; set; }
 
         [InverseProperty("BundleInv")]
         public virtual ICollection<ProductBundle> BundleRef { get; set; }

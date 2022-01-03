@@ -16,7 +16,7 @@ namespace Edumaq.Dto
         public long UnitId { get; set; }
         public string ItemType { get; set; }
         public int Size { get; set; }
-        public long ColorId { get; set; }
+        public long? ColorId { get; set; }
         public int OpeningStock { get; set; }
         public long TaxId { get; set; }
         public int Cost { get; set; }
@@ -25,7 +25,9 @@ namespace Edumaq.Dto
         public bool IsBundledProduct { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-
+        public bool IsDeleted { get; set; }
+        public DateTime DeletedDate { get; set; }
+        public long DeletedBy { get; set; }
         public Item ConvertToModel(ItemDto itemDto)
         {
             Item item = new Item();
@@ -49,6 +51,9 @@ namespace Edumaq.Dto
             item.IsBundledProduct = itemDto.IsBundledProduct;
             item.Description = itemDto.Description;
             item.Image = itemDto.Image;
+            item.DeletedBy = itemDto.DeletedBy;
+            item.DeletedDate = itemDto.DeletedDate;
+            item.IsDeleted = itemDto.IsDeleted;
 
             item.CreatedDate = DateTime.Now;
             item.CreatedBy = 0;

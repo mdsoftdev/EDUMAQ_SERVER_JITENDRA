@@ -16,7 +16,7 @@ namespace Edumaq.Dto
         public string ItemCode { get; set; }
         public int Quantity { get; set; }
         public decimal Rate { get; set; }
-        public decimal Discount { get; set; }
+        public decimal? Discount { get; set; }
         public decimal Tax { get; set; }
         public decimal Total { get; set; }
 
@@ -32,7 +32,7 @@ namespace Edumaq.Dto
             purchaseOrderItem.ItemCode = purchaseOrderItemDto.ItemCode;
             purchaseOrderItem.Quantity = purchaseOrderItemDto.Quantity;
             purchaseOrderItem.Rate = purchaseOrderItemDto.Rate;
-            purchaseOrderItem.Discount = purchaseOrderItemDto.Discount;
+            purchaseOrderItem.Discount = purchaseOrderItemDto.Discount != null ? purchaseOrderItemDto.Discount.Value : decimal.Zero;
             purchaseOrderItem.Tax = purchaseOrderItemDto.Tax;
             purchaseOrderItem.Total = purchaseOrderItemDto.Total;
 
